@@ -33,7 +33,7 @@ void init_display() {
  * @param char *content
  * @return void
  */
-void set_display_row(int x, int y, char *content) {
+void set_display_row(uint8_t x, uint8_t y, const char *content...) {
     lcd.setPos(x, y);
     lcd.printf(content);
 }

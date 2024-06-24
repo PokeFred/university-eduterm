@@ -10,6 +10,7 @@
 
 #include <display.h>
 #include <buzzer.h>
+#include <status_led.h>
 
 // RW1073 Display settings
 constexpr uint8_t BG_LIGHT = 32;
@@ -50,15 +51,6 @@ static ESP32Encoder encoder;
 static Bounce encButton = Bounce();
 static int64_t encoder_count;
 
-void init_status_led() {
-    strip.begin();
-    strip.show();
-    strip.setBrightness(50);  // Set BRIGHTNESS to about 1/5 (max = 255)
-    COL_BLK = Adafruit_NeoPixel::Color(0, 0, 0);
-    COL_RED = Adafruit_NeoPixel::Color(255, 0, 0);
-    COL_GRN = Adafruit_NeoPixel::Color(0, 255, 0);
-}
-
 void init_encoder() {
     encoder.attachSingleEdge(ENC_A, ENC_B);
     encoder.clearCount();
@@ -92,9 +84,8 @@ void setup() {
         //char buffer[1];
         //itoa(i, buffer, 1);
         //char *content = strcat("Zeile ", buffer);
-        char *content = "Hey";
 
-        set_display_row(0, i, content);
+        set_display_row(0, i, "Zeie", i);
     }
 
     strip.setPixelColor(0, COL_RED);

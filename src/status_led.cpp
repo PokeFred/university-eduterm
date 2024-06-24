@@ -1,5 +1,6 @@
 #include <status_led.h>
 
+#include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
 
 #define LED_PIN 27
@@ -19,14 +20,31 @@ void init_status_led() {
 }
 
 /**
- * Turn on the status LED with the specified color
+ * Turn on the status LED with an specified RGB-Color
  * @param int red
  * @param int green
  * @param int blue
  * @return void
  */
-void toggle_status_led(int red, int green, int blue) {
-    strip.setPixelColor(0, Adafruit_NeoPixel::Color(red, green, blue));
+void toggle_status_led(uint8_t red, uint8_t green, uint8_t blue) {
+    uint8_t pixelIndex = 0;
+
+    strip.setPixelColor(pixelIndex, red, green, blue);
+    strip.show();
+}
+
+/**
+ * Turn on the status LED with an specified RGBW-Color
+ * @param int red
+ * @param int green
+ * @param int blue
+ * @param int white
+ * @return void
+ */
+void toggle_status_led(uint8_t red, uint8_t green, uint8_t blue, uint8_t white) {
+    uint8_t pixelIndex = 0;
+
+    strip.setPixelColor(pixelIndex, red, green, blue, white);
     strip.show();
 }
 

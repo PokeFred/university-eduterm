@@ -1,3 +1,5 @@
+#include <buzzer.h>
+
 #include <Arduino.h>
 
 #define BUZZER 33
@@ -16,7 +18,7 @@ void init_buzzer() {
  * @param int ms
  * @return void
  */
-void buzzer_signal(int ms) {
+void buzzer_signal(uint32_t ms) {
     ms = (ms <= 2000) ? ms : 2000;
     digitalWrite(BUZZER, HIGH);
     delay(ms);
