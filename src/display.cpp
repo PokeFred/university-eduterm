@@ -4,12 +4,12 @@
 #include <Adafruit_NeoPixel.h>
 #include <lcd_esp.h>
 
-#define BG_LIGHT 32
+#define INPUT_PIN 32
+#define RESET_PIN 25
 #define SSD_SS SS
 #define SSD_MISO MISO
 #define SSD_MOSI MOSI
 #define SSD_SCK SCK
-#define RESET_PIN 25
 
 static RW1073 lcd(SSD_SS, SSD_MISO, SSD_MOSI, SSD_SCK, RESET_PIN);
 
@@ -18,8 +18,8 @@ static RW1073 lcd(SSD_SS, SSD_MISO, SSD_MOSI, SSD_SCK, RESET_PIN);
  * @return void
  */
 void init_display() {
-    pinMode(BG_LIGHT, OUTPUT);
-    digitalWrite(BG_LIGHT, HIGH);
+    pinMode(INPUT_PIN, OUTPUT);
+    digitalWrite(INPUT_PIN, HIGH);
 
     lcd.begin(HD44780::R4, HD44780::C20);
     lcd.cursorOff();
@@ -37,3 +37,5 @@ void set_display_row(uint8_t x, uint8_t y, const char *content...) {
     lcd.setPos(x, y);
     lcd.printf(content);
 }
+
+// TODO clear method

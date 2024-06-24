@@ -54,7 +54,7 @@ static int64_t encoder_count;
 void init_encoder() {
     encoder.attachSingleEdge(ENC_A, ENC_B);
     encoder.clearCount();
-    encButton.attach(ENC_SW, INPUT);
+    encButton.attach(ENC_SW, INPUT); // TODO input pin rename
     encButton.interval(5);  // Debounce intervall in ms
     pinMode(ENC_SW, INPUT);
 }
@@ -85,11 +85,10 @@ void setup() {
         //itoa(i, buffer, 1);
         //char *content = strcat("Zeile ", buffer);
 
-        set_display_row(0, i, "Zeie", i);
+        set_display_row(0, i, "Zeile", i);
     }
 
-    strip.setPixelColor(0, COL_RED);
-    strip.show();
+    toggle_green_status_led();
 }
 
 void loop() {

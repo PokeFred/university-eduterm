@@ -27,7 +27,7 @@ void init_status_led() {
  * @return void
  */
 void toggle_status_led(uint8_t red, uint8_t green, uint8_t blue) {
-    uint8_t pixelIndex = 0;
+    uint16_t pixelIndex = 0;
 
     strip.setPixelColor(pixelIndex, red, green, blue);
     strip.show();
@@ -42,7 +42,7 @@ void toggle_status_led(uint8_t red, uint8_t green, uint8_t blue) {
  * @return void
  */
 void toggle_status_led(uint8_t red, uint8_t green, uint8_t blue, uint8_t white) {
-    uint8_t pixelIndex = 0;
+    uint16_t pixelIndex = 0;
 
     strip.setPixelColor(pixelIndex, red, green, blue, white);
     strip.show();
