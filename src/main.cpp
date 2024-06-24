@@ -11,6 +11,7 @@
 #include <display.h>
 #include <buzzer.h>
 #include <status_led.h>
+#include <joystick.h>
 
 // RW1073 Display settings
 constexpr uint8_t BG_LIGHT = 32;
@@ -59,6 +60,7 @@ void init_encoder() {
     pinMode(ENC_SW, INPUT);
 }
 
+/**
 void init_joystick() {
     pinMode(switchU, INPUT);
     pinMode(switchR, INPUT);
@@ -69,6 +71,7 @@ void init_joystick() {
         js_state |= digitalRead(joystick[i]) << i;
     }
 }
+*/
 
 void setup() {
     delay(1536);
@@ -88,10 +91,21 @@ void setup() {
         set_display_row(0, i, "Zeile", i);
     }
 
-    toggle_green_status_led();
+    toggle_red_status_led();
 }
 
 void loop() {
-    //delay(250);
-    //buzzer_signal(100);
+    if (isTopJoyStickPressed()) {
+        toggle_green_status_led();
+    } else if (isLeftJoyStickPressed()) {
+        //toggle_green_status_led();
+    } else if (isRightJoyStickPressed()) {
+        //toggle_green_status_led();
+    } else if (isBottomJoyStickPressed()) {
+        //toggle_green_status_led();
+    } else {
+        toggle_red_status_led();
+    }
+
+    delay(100);
 }
