@@ -8,8 +8,7 @@
  */
 static int init_semaphore() {
     sem_t sem;
-    sem_init(&sem, 0, 1);
-    return 0;
+    return sem_init(&sem, 0, 1);
 }
 
 /**
