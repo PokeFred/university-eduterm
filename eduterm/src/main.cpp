@@ -8,15 +8,13 @@
 #include <monitor.h>
 #include <stdlib.h>
 
+#include <config.h>
 #include <display.h>
 #include <buzzer.h>
 #include <status_led.h>
 #include <joystick.h>
-
 #include "../../server/src/dataframe.h"
 
-static const char *SSID = "";
-static const char *PASSWORD = "";
 static WiFiUDP udp;
 
 // RW1073 Display settings
@@ -81,7 +79,7 @@ void init_joystick() {
 
 void init_wifi() {
     WiFiClass::mode(WIFI_STA);
-    WiFi.begin(SSID, PASSWORD);
+    WiFi.begin(WLAN_SSID, WLAN_PASSWORD);
 
     bool led_state = true;
     for (int i = 1; true; i++) {
@@ -103,7 +101,7 @@ void init_wifi() {
         }
     }
 
-    Serial.printf("Connected to Wi-Fi '%s'\n", SSID);
+    Serial.printf("Connected to Wi-Fi '%s'\n", WLAN_SSID);
     Serial.print(F("(now I am client '"));
     Serial.print(WiFi.localIP());
     Serial.println(F("')\n"));
