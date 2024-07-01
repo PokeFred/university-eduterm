@@ -1,6 +1,6 @@
 # IDE Stuff
-.vscode/**
-.idea/**
+**/.vscode/**
+**/.idea/**
 
 # Folders
 
