@@ -4,20 +4,20 @@
 #include <semaphore.h>
 
 /**
- * ddd
+ * initialize the semaphore
  * @return int
  */
 static int init_semaphore();
 
 /**
- * ddd
+ * lock the semaphore
  * @param sem_t sem
  * @return void
  */
 static void semaphore_lock(sem_t sem);
 
 /**
- * ddd
+ * unlock the semaphore
  * @param sem_t sem
  * @return void
  */
